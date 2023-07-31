@@ -17,7 +17,7 @@ const SideBar: React.FC = () => {
 
     return (
         <div className="w-full h-screen overflow-auto bg-white border-r-2 scroll-smooth">
-            <div className="h-12 flex justify-center items-center bg-[#161616] text-white gap-3">
+            <div className="h-12 flex justify-center items-center bg-[#161616] text-white gap-2">
                 <img src={logoPicture} alt="Logo" className="w-10 h-auto" />
                 <span>Service Bangun Bersama</span>
             </div>
@@ -37,7 +37,7 @@ const SideBar: React.FC = () => {
                         <MenuItem to="/shift" text="Shift" icon={FaRegCircle} />
                         <MenuItem to="/task" text="Task" icon={FaRegCircle} />
                     </MenuItemAccordion>
-                    <MenuItem to="/login" onClick={handleLogout} text="Logout" icon={FaArrowRightFromBracket} />
+                    <MenuItem to="/" onClick={handleLogout} text="Logout" icon={FaArrowRightFromBracket} />
                 </div>
             </div>
         </div>

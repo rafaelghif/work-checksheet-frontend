@@ -1,7 +1,9 @@
+import ContainerInputTask from "../features/input-task-features/components/ContainerInputTask"
+
 const InputChecksheet: React.FC = () => {
     return (
         <>
-            Input Checksheet
+            <ContainerInputTask />
         </>
     );
 }

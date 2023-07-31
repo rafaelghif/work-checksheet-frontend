@@ -1,17 +1,17 @@
 import { useMutation, useQueryClient } from "react-query";
 import useLoadingStore from "../../../stores/useLoadingStore";
 import { useToast } from "../../../hooks/useToast";
-import { UpdateLocationType } from "../../../types/location-type";
-import { updateLocation } from "../../../services/location-service";
 import { AxiosError } from "axios";
 import { ApiResponseErrorInterface } from "../../../types/api-response-type";
+import { updateShift } from "../../../services/shift-service";
+import { UpdateShiftType } from "../../../types/shift-type";
 
-export const useUpdateLocation = () => {
+export const useUpdateShift = () => {
     const queryClient = useQueryClient();
     const { setLoading } = useLoadingStore();
     const { successToast, errorToast } = useToast();
     return useMutation({
-        mutationFn: (payload: UpdateLocationType) => updateLocation(payload),
+        mutationFn: (payload: UpdateShiftType) => updateShift(payload),
         onMutate: () => {
             setLoading(true);
         },
@@ -23,7 +23,7 @@ export const useUpdateLocation = () => {
         onSuccess: async (response) => {
             successToast(response);
             queryClient.invalidateQueries({
-                queryKey: ["locations"]
+                queryKey: ["shifts"]
             });
         },
         onSettled: () => {

@@ -1,13 +1,13 @@
 import { AxiosError } from "axios";
 import { axiosGet, axiosPatch, axiosPost } from "./api-service";
 import { ApiResponseErrorInterface, ApiResponseInterface } from "../types/api-response-type";
-import { CreateLocationType, LocationInterface, UpdateLocationType } from "../types/location-type";
+import { CreateEmployeeType, EmployeeInterface, UpdateEmployeeType } from "../types/employee-type";
 
-const apiName = "/location";
+const apiName = "/employee";
 
-export const getLocations = async (search: string): Promise<LocationInterface[]> => {
+export const getEmployees = async (search: string): Promise<EmployeeInterface[]> => {
     try {
-        const response: ApiResponseInterface<LocationInterface[]> = await axiosGet(`${apiName}/?search=${search}`);
+        const response: ApiResponseInterface<EmployeeInterface[]> = await axiosGet(`${apiName}/?search=${search}`);
         return response.data;
     } catch (error) {
         const err = error as AxiosError<ApiResponseErrorInterface>;
@@ -15,7 +15,17 @@ export const getLocations = async (search: string): Promise<LocationInterface[]>
     }
 }
 
-export const createLocation = async (payload: CreateLocationType): Promise<string> => {
+export const getActiveEmployees = async (): Promise<EmployeeInterface[]> => {
+    try {
+        const response: ApiResponseInterface<EmployeeInterface[]> = await axiosGet(`${apiName}/active`);
+        return response.data;
+    } catch (error) {
+        const err = error as AxiosError<ApiResponseErrorInterface>;
+        throw err;
+    }
+}
+
+export const createEmployee = async (payload: CreateEmployeeType): Promise<string> => {
     try {
         const response: ApiResponseInterface<null> = await axiosPost(`${apiName}/`, payload);
         return response.message;
@@ -25,7 +35,7 @@ export const createLocation = async (payload: CreateLocationType): Promise<strin
     }
 }
 
-export const updateLocation = async (payload: UpdateLocationType): Promise<string> => {
+export const updateEmployee = async (payload: UpdateEmployeeType): Promise<string> => {
     try {
         const response: ApiResponseInterface<null> = await axiosPatch(`${apiName}/`, payload);
         return response.message;

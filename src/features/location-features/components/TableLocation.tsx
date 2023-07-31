@@ -23,6 +23,12 @@ const TableLocation: React.FC<TableLocationProps> = ({ search = "", handleClickB
         name: "Status",
         cell: (row) => <span>{row.inActive ? "InActive" : "Active"}</span>,
         sortable: true,
+        conditionalCellStyles: [{
+            when: row => row.inActive,
+            style: {
+                color: "#dc3545"
+            }
+        }]
     }, {
         name: "Update By",
         selector: (row) => row.updatedBy,

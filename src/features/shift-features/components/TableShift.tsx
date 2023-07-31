@@ -1,24 +1,19 @@
 import { TableColumn } from "react-data-table-component";
 import Table from "../../../components/Table";
 import { useMemo } from "react";
-import { EmployeeInterface } from "../../../types/employee-type";
 import Button from "../../../components/Button";
 import { formatDateTime } from "../../../libs/date-fns";
-import { useQueryEmployee } from "../hooks/useQueryEmployee";
+import { ShiftInterface } from "../../../types/shift-type";
+import { useQueryShift } from "../hooks/useQueryShift";
 
-interface TableEmployeeProps {
+interface TableShiftProps {
     search?: string;
-    handleClickBtnEdit: (data: EmployeeInterface) => void;
+    handleClickBtnEdit: (data: ShiftInterface) => void;
 }
 
-const TableEmployee: React.FC<TableEmployeeProps> = ({ search = "", handleClickBtnEdit }) => {
-    const { data } = useQueryEmployee(search);
-    const columns: TableColumn<EmployeeInterface>[] = useMemo(() => [{
-        name: "Employee Id",
-        selector: (row) => row.employeeId,
-        sortable: true,
-        wrap: true
-    }, {
+const TableShift: React.FC<TableShiftProps> = ({ search = "", handleClickBtnEdit }) => {
+    const { data } = useQueryShift(search);
+    const columns: TableColumn<ShiftInterface>[] = useMemo(() => [{
         name: "Name",
         selector: (row) => row.name,
         sortable: true,
@@ -49,8 +44,8 @@ const TableEmployee: React.FC<TableEmployeeProps> = ({ search = "", handleClickB
         center: true
     }], [handleClickBtnEdit]);
     return (
-        <Table columns={columns as EmployeeInterface[]} data={data} responsive pagination striped highlightOnHover />
+        <Table columns={columns as ShiftInterface[]} data={data} responsive pagination striped highlightOnHover />
     );
 }
 
-export default TableEmployee;
+export default TableShift;

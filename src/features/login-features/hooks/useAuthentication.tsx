@@ -31,7 +31,7 @@ export const useAuthentication = () => {
             setToken(token);
             setUser(user);
 
-            successToast(message);
+            successToast(message, 3000);
             loginUser();
         },
         onSettled: (_, err) => {

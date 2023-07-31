@@ -1,24 +1,19 @@
 import { TableColumn } from "react-data-table-component";
 import Table from "../../../components/Table";
 import { useMemo } from "react";
-import { EmployeeInterface } from "../../../types/employee-type";
 import Button from "../../../components/Button";
 import { formatDateTime } from "../../../libs/date-fns";
-import { useQueryEmployee } from "../hooks/useQueryEmployee";
+import { TaskInterface } from "../../../types/task-type";
+import { useQueryTask } from "../hooks/useQueryTask";
 
-interface TableEmployeeProps {
+interface TableTaskProps {
     search?: string;
-    handleClickBtnEdit: (data: EmployeeInterface) => void;
+    handleClickBtnEdit: (data: TaskInterface) => void;
 }
 
-const TableEmployee: React.FC<TableEmployeeProps> = ({ search = "", handleClickBtnEdit }) => {
-    const { data } = useQueryEmployee(search);
-    const columns: TableColumn<EmployeeInterface>[] = useMemo(() => [{
-        name: "Employee Id",
-        selector: (row) => row.employeeId,
-        sortable: true,
-        wrap: true
-    }, {
+const TableTask: React.FC<TableTaskProps> = ({ search = "", handleClickBtnEdit }) => {
+    const { data } = useQueryTask(search);
+    const columns: TableColumn<TaskInterface>[] = useMemo(() => [{
         name: "Name",
         selector: (row) => row.name,
         sortable: true,
@@ -49,8 +44,8 @@ const TableEmployee: React.FC<TableEmployeeProps> = ({ search = "", handleClickB
         center: true
     }], [handleClickBtnEdit]);
     return (
-        <Table columns={columns as EmployeeInterface[]} data={data} responsive pagination striped highlightOnHover />
+        <Table columns={columns as TaskInterface[]} data={data} responsive pagination striped highlightOnHover />
     );
 }
 
-export default TableEmployee;
+export default TableTask;

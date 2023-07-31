@@ -1,17 +1,17 @@
 import { useMutation, useQueryClient } from "react-query";
 import useLoadingStore from "../../../stores/useLoadingStore";
 import { useToast } from "../../../hooks/useToast";
-import { UpdateLocationType } from "../../../types/location-type";
-import { updateLocation } from "../../../services/location-service";
 import { AxiosError } from "axios";
 import { ApiResponseErrorInterface } from "../../../types/api-response-type";
+import { UpdateTaskType } from "../../../types/task-type";
+import { updateTask } from "../../../services/task-service";
 
-export const useUpdateLocation = () => {
+export const useUpdateTask = () => {
     const queryClient = useQueryClient();
     const { setLoading } = useLoadingStore();
     const { successToast, errorToast } = useToast();
     return useMutation({
-        mutationFn: (payload: UpdateLocationType) => updateLocation(payload),
+        mutationFn: (payload: UpdateTaskType) => updateTask(payload),
         onMutate: () => {
             setLoading(true);
         },
@@ -23,7 +23,7 @@ export const useUpdateLocation = () => {
         onSuccess: async (response) => {
             successToast(response);
             queryClient.invalidateQueries({
-                queryKey: ["locations"]
+                queryKey: ["tasks"]
             });
         },
         onSettled: () => {

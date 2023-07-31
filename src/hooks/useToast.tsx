@@ -12,7 +12,7 @@ export const useToast = () => {
     const errorToast = (messageData: string = "", duration: number = 3000) => {
         toast.error(messageData, {
             duration: duration,
-            position: "bottom-center"
+            position: "top-center"
         });
     }
 
