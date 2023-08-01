@@ -1,5 +1,5 @@
 import { useState } from "react";
-import imageCompression, { Options } from 'browser-image-compression';
+import imageCompression, { Options as browserImageOptions } from 'browser-image-compression';
 import Button from "../../../components/Button";
 import SelectEmployee from "./SelectEmployee";
 import SelectLocation from "./SelectLocation";
@@ -12,14 +12,14 @@ import { useCreateChecksheet } from "../hooks/useCreateChecksheet";
 const initialValue: ChecksheetPayloadInterface = {
     employee: "",
     shift: "",
-    picture: [],
+    pictures: [],
     isKnowSupervisor: false,
     isKnowClient: false,
     isClean: false,
     details: [{
         label: 0,
         locations: [],
-        task: [],
+        tasks: [],
     }]
 }
 
@@ -43,12 +43,12 @@ const FormInputTask: React.FC = () => {
         if (file?.length) {
             for (let index = 0; index < file.length || 0; index++) {
                 if (file.item(index)) {
-                    const options: Options = {
+                    const options: browserImageOptions = {
                         maxSizeMB: 0.3,
                         maxWidthOrHeight: 720,
                     };
                     const compressedFile = await imageCompression(file.item(index)!, options);
-                    newFiles.push(compressedFile);
+                    newFiles.push(new File([compressedFile], file.item(index)!.name));
                 }
             }
         }
@@ -75,11 +75,11 @@ const FormInputTask: React.FC = () => {
         e.preventDefault();
         const newFormData: ChecksheetPayloadInterface = {
             ...formData,
-            picture: files,
+            pictures: files,
             details: locations.map((location, index) => ({
                 label: index,
                 locations: location.map((location) => location.value),
-                task: tasks[index].map((task) => task.value),
+                tasks: tasks[index].map((task) => task.value),
             })),
         };
         mutate(newFormData);

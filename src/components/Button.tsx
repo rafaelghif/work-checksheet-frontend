@@ -12,14 +12,17 @@ interface ButtonProps {
     onClick?: () => void;
     color?: color;
     icon?: IconType;
+    hidden?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, type = "button", className = "", onClick, color = "light", icon: Icon }) => {
+const Button: React.FC<ButtonProps> = ({ children, type = "button", className = "", onClick, color = "light", icon: Icon, hidden = false }) => {
     const [buttonColor, setButtonColor] = useState<string>("");
+    const [hiddenAttribute, setHiddenAttribute] = useState<string>("flex");
 
     useEffect(() => {
         setButtonColor(getButtonColorClass(color));
-    }, [color]);
+        setHiddenAttribute(hidden ?"hidden" : "flex");
+    }, [color,hidden]);
 
     const getButtonColorClass = (color: color): string => {
         switch (color) {
@@ -38,7 +41,7 @@ const Button: React.FC<ButtonProps> = ({ children, type = "button", className = 
         }
     };
 
-    const buttonClasses = classNames("flex items-center justify-center px-5 py-2 rounded text-center", buttonColor, className);
+    const buttonClasses = classNames("items-center justify-center px-5 py-2 rounded text-center", hiddenAttribute, buttonColor, className,);
 
     return (
         <button type={type} onClick={onClick} className={buttonClasses}>

@@ -3,15 +3,15 @@ import useLoadingStore from "../../../stores/useLoadingStore";
 import { useToast } from "../../../hooks/useToast";
 import { AxiosError } from "axios";
 import { ApiResponseErrorInterface } from "../../../types/api-response-type";
-import { ChecksheetPayloadInterface } from "../../../types/checksheet-type";
-import { createChecksheet } from "../../../services/checksheet-service";
+import { ChecksheetInterface } from "../../../types/checksheet-type";
+import { approveChecksheet } from "../../../services/checksheet-service";
 
-export const useCreateChecksheet = () => {
+export const useApproveChecksheet = () => {
     const queryClient = useQueryClient();
     const { setLoading } = useLoadingStore();
     const { successToast, errorToast } = useToast();
     return useMutation({
-        mutationFn: (payload: ChecksheetPayloadInterface) => createChecksheet(payload),
+        mutationFn: (payload: Pick<ChecksheetInterface, "id">) => approveChecksheet(payload),
         onMutate: () => {
             setLoading(true);
         },
@@ -21,17 +21,13 @@ export const useCreateChecksheet = () => {
             setLoading(false);
         },
         onSuccess: async (response) => {
-            successToast(response, 2000);
-            console.log(response);
+            successToast(response, 3000);
             queryClient.invalidateQueries({
-                queryKey: ["checksheet"]
+                queryKey: ["checksheets"]
             });
         },
         onSettled: () => {
-            setLoading(false);
-            setTimeout(() => {
-                window.location.reload();
-            }, 2000);
+            setLoading(false)
         }
     });
 }

@@ -1,6 +1,6 @@
 import logoPicture from "../assets/images/logo.png";
 import avatarPicture from "../assets/images/avatar.svg";
-import { FaChartColumn, FaRegCircle, FaDatabase, FaArrowRightFromBracket } from "react-icons/fa6"
+import { FaChartColumn, FaRegCircle, FaDatabase, FaArrowRightFromBracket,FaCalendar } from "react-icons/fa6"
 import MenuItem from "../components/MenuItem";
 import MenuItemAccordion from "../components/MenuItemAccordion";
 import useUserStore from "../stores/useUserStore";
@@ -9,14 +9,14 @@ import useAuthStore from "../stores/useAuthStore";
 const SideBar: React.FC = () => {
     const { user, clearUser } = useUserStore();
     const { logoutUser } = useAuthStore();
-    
+
     const handleLogout = () => {
         clearUser();
         logoutUser();
     }
 
     return (
-        <div className="w-full h-screen overflow-auto bg-white border-r-2 scroll-smooth">
+        <div className="w-full h-screen overflow-auto bg-white scroll-smooth">
             <div className="h-12 flex justify-center items-center bg-[#161616] text-white gap-2">
                 <img src={logoPicture} alt="Logo" className="w-10 h-auto" />
                 <span>Service Bangun Bersama</span>
@@ -37,6 +37,7 @@ const SideBar: React.FC = () => {
                         <MenuItem to="/shift" text="Shift" icon={FaRegCircle} />
                         <MenuItem to="/task" text="Task" icon={FaRegCircle} />
                     </MenuItemAccordion>
+                    <MenuItem to="/report" text="Report" icon={FaCalendar} />
                     <MenuItem to="/" onClick={handleLogout} text="Logout" icon={FaArrowRightFromBracket} />
                 </div>
             </div>

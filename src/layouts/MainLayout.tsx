@@ -11,7 +11,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, title }) => {
             <div className="w-3/12 xl:w-2/12">
                 <SideBar />
             </div>
-            <div className="w-9/12 xl:w-10/12">
+            <div className="w-9/12 h-full border-l-2 xl:w-10/12">
                 <div className="h-12 flex pl-5 items-center bg-[#161616] text-white gap-3">
                     <span>{title}</span>
                 </div>
