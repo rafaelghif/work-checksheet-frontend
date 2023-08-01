@@ -1,10 +1,15 @@
+interface DetailChecksheetInterface {
+    label: number,
+    locations: string[];
+    task: string[];
+}
+
 export interface ChecksheetPayloadInterface {
     employee: string | null;
     shift: string | null;
-    detail: [{
-        label: number,
-        locations: string[];
-        task: string[];
-        picture: File[] | null;
-    }];
+    picture: File[] | undefined;
+    isKnowSupervisor: boolean;
+    isKnowClient: boolean;
+    isClean: boolean;
+    details: DetailChecksheetInterface[];
 }
