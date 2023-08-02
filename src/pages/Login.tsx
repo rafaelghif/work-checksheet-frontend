@@ -4,7 +4,7 @@ import FormLogin from "../features/login-features/components/FormLogin";
 const Login: React.FC = () => {
     return (
         <div className="flex items-center justify-center w-full h-screen p-0 m-0 bg-slate-200">
-            <div className="flex flex-col items-center justify-center w-1/3 gap-3 py-6 bg-white rounded-lg">
+            <div className="flex flex-col items-center justify-center w-11/12 gap-3 py-6 bg-white rounded-lg lg:w-1/3">
                 <div>
                     <img src={logoPicture} alt="Logo" className="w-24 h-auto" />
                 </div>

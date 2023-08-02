@@ -31,14 +31,14 @@ const SideBar: React.FC = () => {
                 </div>
                 <div className="flex flex-col w-full">
                     <MenuItem to="/dashboard" text="Dashboard" icon={FaChartColumn} />
-                    <MenuItemAccordion text="Master Data" icon={FaDatabase}>
+                    <MenuItemAccordion text="Master Data" icon={FaDatabase} hidden={user.role === "Client"}>
                         <MenuItem to="/employee" text="Employee" icon={FaRegCircle} />
                         <MenuItem to="/location" text="Location" icon={FaRegCircle} />
                         <MenuItem to="/shift" text="Shift" icon={FaRegCircle} />
                         <MenuItem to="/task" text="Task" icon={FaRegCircle} />
                     </MenuItemAccordion>
                     <MenuItem to="/report" text="Report" icon={FaCalendar} />
-                    <MenuItem to="/" onClick={handleLogout} text="Logout" icon={FaArrowRightFromBracket} />
+                    <MenuItem to="/login" onClick={handleLogout} text="Logout" icon={FaArrowRightFromBracket} />
                 </div>
             </div>
         </div>

@@ -8,10 +8,10 @@ interface MainLayoutProps {
 const MainLayout: React.FC<MainLayoutProps> = ({ children, title }) => {
     return (
         <div className="flex flex-row w-screen h-screen">
-            <div className="w-3/12 xl:w-2/12">
+            <div className="hidden lg:block lg:w-3/12 xl:w-2/12">
                 <SideBar />
             </div>
-            <div className="w-9/12 h-full border-l-2 xl:w-10/12">
+            <div className="w-full h-full lg:border-l-2 lg:w-9/12 xl:w-10/12">
                 <div className="h-12 flex pl-5 items-center bg-[#161616] text-white gap-3">
                     <span>{title}</span>
                 </div>

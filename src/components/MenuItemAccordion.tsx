@@ -4,11 +4,12 @@ interface MenuItemAccordionProps {
     text: string;
     children: React.ReactNode;
     icon: IconType;
+    hidden?: boolean
 }
 
-const MenuItemAccordion: React.FC<MenuItemAccordionProps> = ({ children, text, icon: Icon }) => {
+const MenuItemAccordion: React.FC<MenuItemAccordionProps> = ({ children, text, icon: Icon, hidden = false }) => {
     return (
-        <div className="relative overflow-hidden hover:bg-[#f8fafc] border-b">
+        <div className={`relative overflow-hidden hover:bg-[#f8fafc] border-b ${hidden ? `hidden` : `block`}`}>
             <input type="checkbox" className="absolute inset-x-0 top-0 z-10 w-full h-12 opacity-0 cursor-pointer peer" />
             <div className="flex items-center w-full h-12">
                 <span className="flex items-center w-full gap-3 px-4 py-3">
