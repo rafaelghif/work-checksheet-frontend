@@ -13,7 +13,7 @@ const ContainerReport: React.FC = () => {
     const [search, setSearch] = useState<string>("");
     const [yearFilter, setYearFilter] = useState(currentDate.getFullYear().toString());
     const [monthFilter, setMonthFilter] = useState((currentDate.getMonth() + 1).toString());
-    
+
     const { mutate } = useApproveChecksheet();
 
     const handleClickApprove = (data: ChecksheetInterface) => {
@@ -22,13 +22,13 @@ const ContainerReport: React.FC = () => {
 
     return (
         <div className="flex flex-col w-full gap-3">
+            <h1 className="text-xl font-semibold">Data Reports</h1>
             <div className="grid grid-cols-2 gap-3">
                 <div className="flex flex-col gap-1">
                     <label className="font-semibold">Year</label>
                     <Suspense fallback={<Spinner />}>
                         <SelectYear value={yearFilter} onChange={(year) => setYearFilter(year)} />
                     </Suspense>
-
                 </div>
                 <div className="flex flex-col gap-1">
                     <label className="font-semibold">Month</label>
