@@ -31,7 +31,7 @@ const Dashboard: React.FC = () => {
                             <FaCalendarDay />
                             <span>Shift</span>
                         </Link>
-                        <Link to="/shift" className="flex flex-col items-center justify-center w-full gap-2 p-5 shadow">
+                        <Link to="/task" className="flex flex-col items-center justify-center w-full gap-2 p-5 shadow">
                             <FaListCheck />
                             <span>Tasks</span>
                         </Link>
