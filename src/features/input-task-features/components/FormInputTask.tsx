@@ -114,7 +114,7 @@ const FormInputTask: React.FC = () => {
             ))}
             <div className="flex flex-col w-full gap-1" >
                 <label className="font-semibold">Foto</label>
-                <input type="file" accept="image/*" multiple={true} onChange={(e) => handleChangeFiles(e.target.files)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                <input type="file" multiple={true} onChange={(e) => handleChangeFiles(e.target.files)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </div>
             <div className="flex flex-col gap-2 p-3 rounded shadow">
                 <span className="text-lg font-semibold border-b">Kondisi Pekerjaan</span>
