@@ -1,6 +1,6 @@
 import logoPicture from "../assets/images/logo.png";
 import avatarPicture from "../assets/images/avatar.svg";
-import { FaChartColumn, FaRegCircle, FaDatabase, FaArrowRightFromBracket,FaCalendar } from "react-icons/fa6"
+import { FaChartColumn, FaRegCircle, FaDatabase, FaArrowRightFromBracket,FaCalendar } from "react-icons/fa6";
 import MenuItem from "../components/MenuItem";
 import MenuItemAccordion from "../components/MenuItemAccordion";
 import useUserStore from "../stores/useUserStore";
